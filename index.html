@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cyan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" href="data:,">
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Syne+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="game.js" defer></script>
+</head>
+
+<body>
+
+    <!-- SCREENS -->
+
+    <div id="screen-title" class="screen active">
+        <canvas id="bg-canvas"></canvas>
+
+        <div class="title-content">
+            <div class="title-wrapper">
+                <h1 class="game-title">cyan</h1>
+                <div class="title-underline"></div>
+            </div>
+
+            <nav class="main-menu">
+                <button class="menu-btn" id="btn-play">
+                    <span class="btn-label">play</span>
+                    <span class="btn-arrow">→</span>
+                </button>
+                <button class="menu-btn" id="btn-howto">
+                    <span class="btn-label">how to play</span>
+                    <span class="btn-arrow">→</span>
+                </button>
+                <button class="menu-btn" id="btn-settings">
+                    <span class="btn-label">settings</span>
+                    <span class="btn-arrow">→</span>
+                </button>
+                <button class="menu-btn" id="btn-ranking">
+                    <span class="btn-label">rankings</span>
+                    <span class="btn-arrow">→</span>
+                </button>
+            </nav>
+
+            <footer class="title-footer">
+                <span>a color puzzle game</span>
+            </footer>
+        </div>
+    </div>
+
+    <!-- HOW TO PLAY MODAL -->
+
+    <div id="modal-howto" class="modal hidden">
+        <div class="modal-box">
+            <button class="modal-close" id="close-howto">✕</button>
+            <h2 class="modal-title">how to play</h2>
+            <div class="modal-body">
+                <div class="howto-item">
+                    <span class="howto-icon">👁</span>
+                    <p>Each level is a puzzle. There are no instructions. Look, click, explore.</p>
+                </div>
+                <div class="howto-item">
+                    <span class="howto-icon">🎯</span>
+                    <p>Your goal is always the same: make everything <strong>cyan</strong>.</p>
+                </div>
+                <div class="howto-item">
+                    <span class="howto-icon">🔄</span>
+                    <p>Stuck? Use the reset button to start the level over.</p>
+                </div>
+                <div class="howto-item">
+                    <span class="howto-icon">💡</span>
+                    <p>Every puzzle has one elegant solution. Trust your instincts.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SETTINGS MODAL -->
+
+    <div id="modal-settings" class="modal hidden">
+        <div class="modal-box">
+            <button class="modal-close" id="close-settings">✕</button>
+            <h2 class="modal-title">settings</h2>
+            <div class="modal-body">
+
+                <div class="setting-row">
+                    <label class="setting-label">sound effects</label>
+                    <button class="toggle-btn active" id="toggle-sound" aria-pressed="true">
+                        <span class="toggle-track"></span>
+                    </button>
+                </div>
+
+                <div class="setting-divider"></div>
+
+                <div class="setting-row">
+                    <label class="setting-label">reset all progress</label>
+                    <button class="danger-btn" id="btn-reset-progress">reset</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+    <!-- NICKNAME MODAL -->
+    <div id="modal-nickname" class="modal hidden">
+        <div class="modal-box">
+            <button class="modal-close" id="close-nickname">✕</button>
+            <h2 class="modal-title">who are you?</h2>
+            <div class="modal-body">
+                <input type="text" id="input-nickname" class="text-input" placeholder="enter nickname..." maxlength="15" autocomplete="off">
+                <button class="menu-btn" id="btn-start-game" style="width: 100%; margin-top: 10px; justify-content: center;">
+                    <span class="btn-label">start playing</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- RANKING MODAL -->
+    <div id="modal-ranking" class="modal hidden">
+        <div class="modal-box">
+            <button class="modal-close" id="close-ranking">✕</button>
+            <h2 class="modal-title">leaderboard</h2>
+            <div class="modal-body">
+                <div class="ranking-tabs" id="ranking-tabs"></div>
+                <div class="ranking-list" id="ranking-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GAME SCREEN -->
+
+    <div id="screen-game" class="screen hidden">
+        <div class="game-hud">
+            <button class="hud-btn" id="btn-back">← menu</button>
+            <div class="hud-center">
+                <span class="level-counter">level <span id="level-num">1</span></span>
+                <span class="level-timer" id="level-timer">0.00s</span>
+            </div>
+            <button class="hud-btn" id="btn-reset">↺ reset</button>
+        </div>
+        <div id="level-area"></div>
+    </div>
+
+    <!-- CONGRATS SCREEN -->
+    <div id="screen-congrats" class="screen hidden">
+        <div class="congrats-content">
+            <h1 class="congrats-title">Congratulations</h1>
+            <p class="congrats-text">you have completed all levels.</p>
+            
+            <button class="menu-btn" id="btn-congrats-menu">
+                <span class="btn-label">back to menu</span>
+                <span class="btn-arrow">→</span>
+            </button>
+        </div>
+    </div>
+
+    <div id="flash-overlay"></div>
+
+</body>
+</html>
